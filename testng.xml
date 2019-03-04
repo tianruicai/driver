@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="运满满UI自动化测试报告" verbose="1" >
+    <parameter name="report.config" value="src/main/resources/report/extent-config.xml"/>
+    <parameter name="system.info" value="com.extentreport.config.MySystemInfo"/>
+    <test name = "登录" >
+       <classes>
+           <class name="LoginTest">
+          <methods>
+                 <include name="login"/>
+              <include name="im"/>
+
+          </methods>
+
+           </class>
+       </classes>
+    </test>
+    <listeners>
+        <!--测试报告监听器：修改自己的包名地址-->
+         <listener class-name="com.extentreport.listener.MyExtentTestNgFormatter"/>
+
+     </listeners>
+ </suite>
