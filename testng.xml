@@ -3,20 +3,32 @@
 <suite name="运满满UI自动化测试报告" verbose="1" >
     <parameter name="report.config" value="src/main/resources/report/extent-config.xml"/>
     <parameter name="system.info" value="com.extentreport.config.MySystemInfo"/>
-    <test name = "登录" >
+    <test name = "登录"  preserve-order="true">
        <classes>
+
+           <class name="InitTest">
+               <methods>
+                   <include name="init"/>
+
+               </methods>
+           </class>
+
            <class name="LoginTest">
           <methods>
                  <include name="login"/>
-              <include name="im"/>
-
           </methods>
-
            </class>
-       </classes>
-    </test>
-    <listeners>
-        <!--测试报告监听器：修改自己的包名地址-->
+
+             <class name="ImTest">
+                  <methods>
+                      <include name="im"/>
+                  </methods>
+              </class>
+
+          </classes>
+       </test>
+       <listeners>
+           <!--测试报告监听器：修改自己的包名地址-->
          <listener class-name="com.extentreport.listener.MyExtentTestNgFormatter"/>
 
      </listeners>
