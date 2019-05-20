@@ -24,20 +24,19 @@ public class BaseTest {
         DesiredCapabilities capabilities=new DesiredCapabilities();
         //平台设置
         capabilities.setCapability("platformName","Android");
-
-        //设备序列号设置
+        capabilities.setCapability("automationName","uiautomator2");
+               //设备序列号设置
         capabilities.setCapability("deviceName","S9B7N17616001493");
         //系统版本号设置
         capabilities.setCapability("platformVersion","8.0.0");
-        /**
-         * capabilities.setCapability("deviceName","127.0.0.1:62001");
-         * capabilities.setCapability("platformVersion","4.4.2");
-         */
+
+         /* capabilities.setCapability("deviceName","127.0.0.1:62001");
+          capabilities.setCapability("platformVersion","4.4.2");*/
 
         //支持中文输入
-        capabilities.setCapability("unicodeKeyboard","True");
+        //capabilities.setCapability("unicodeKeyboard","True");
         //重置输入法到原有状态
-        capabilities.setCapability("resetKeyboard","True");
+        //capabilities.setCapability("resetKeyboard","True");
         //apk安装
 
         File classpathRoot = new File(System.getProperty("user.dir"));
@@ -45,7 +44,7 @@ public class BaseTest {
         System.out.println("项目路径："+classpathRoot);
         //app的目录
         File appDir = new File(classpathRoot, "src/main/java/apps");
-        File app = new File(appDir, "DRIVER.apk");
+        File app = new File(appDir, "DRIVER_6.21.0.4.apk");
 
         // isNeedInstall为true时，appium需要解析本地的apk包来得到包名和mainActivity
 

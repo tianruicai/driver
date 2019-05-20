@@ -43,6 +43,7 @@ public class DriverUtil {
 
         keepClickElement(driver, new MobileBy.ByAndroidUIAutomator("new UiSelector().className(\"android.widget.Button\").textMatches(\".*始终允许.*\")"));
 
+
     }
 
 

@@ -1,32 +1,49 @@
 import com.utils.DriverUtil;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 public class InitTest extends BaseTest {
 
     /**
-     *系统弹框允许权限
-     *
-     *
-     *
+     *1.同意用户协议
+     *2.允许权限
+     *3.跳过首屏广告
+     *4.关闭弹框广告
      * @auto  田瑞彩
      */
 
     @Test
-    public  void init(){
+    public  void init() throws InterruptedException {
+
+         //同意用户授权协议
+        driver.findElementById("com.xiwei.logistics:id/dialog_btn_right").click();
 
 
+       //去授权
+        WebElement agreebtn=driver.findElementById("com.xiwei.logistics:id/btn_agree");
 
-       //关闭系统弹框
-        DriverUtil.acceptPermission(driver);
-       //跳过首屏广告
-        driver.findElement(By.id("com.xiwei.logistics:id/tv_skip")).click();
+        if(agreebtn.isDisplayed()){
+
+            agreebtn.click();
+
+        }else{
+            System.out.println("无授权");
+
+        }
+
+
+        //始终允许权限
+       // DriverUtil.acceptPermission(driver);
+        driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+
+        //跳过首屏广告
+        driver.findElementByXPath("//*[@text='跳过']").click();
         //关闭弹框广告
+        WebElement element =driver.findElementById("com.xiwei.logistics:id/exit");
 
-        WebElement element=driver.findElement(By.id("com.xiwei.logistics:id/exit"));
-
-        if(element.isDisplayed()){
+        if(element.isDisplayed()==true){
             element.click();
         }else {
             System.out.println("无弹框广告");

@@ -22,6 +22,15 @@
              <class name="ImTest">
                   <methods>
                       <include name="im"/>
+                      <include name="imsetting"/>
+                      <include name="commonword"/>
+                      <include name="voice"/>
+                      <include name="sendmessage"/>
+                      <include name="position"/>
+                      <include name="Collection"/>
+                      <include name="picture"/>
+                      <include name="Photograph"/>
+                      <include name="video"/>
                   </methods>
               </class>
 
