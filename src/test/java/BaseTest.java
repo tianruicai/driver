@@ -54,7 +54,6 @@ public class BaseTest {
             //apk安装司机端
             capabilities.setCapability("app",app.getAbsolutePath());
 
-            //capabilities.setCapability(MobileCapabilityType.APP,"src/main/java／apps／DRIVER.apk");
 
         }else {
             //isNeedInstall为false时，不需要解析apk直接通过appPackage和appActivity在手机查找启动app
@@ -64,6 +63,7 @@ public class BaseTest {
             capabilities.setCapability("appActivity","com.xiwei.logistics.splash.SplashActivity");
 
         }
+
 
         //session自动覆盖
         capabilities.setCapability("sessionOverride",false);
@@ -78,13 +78,14 @@ public class BaseTest {
         try{
             //初始化
             driver= new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
         }catch (MalformedURLException e){
             e.printStackTrace();
         }
 
-
         //等待20秒
         driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+
     }
 
 

@@ -1,8 +1,10 @@
+import com.utils.DriverUtil;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -31,11 +33,8 @@ public class ImTest extends BaseTest {
      * 3.检查用户角色和用户名
      */
 
-    @Test(priority = 0)
-    public void im()throws InterruptedException{
-
-       // AndroidElement chatElement;
-        Thread.sleep(20000);
+    @Test(priority=1)
+    public void imdetail(){
         //点击消息，进入消息列表
         driver.findElementByXPath("//*[@text='消息']").click();
         //点击聊天会话"田瑞彩"，进入聊天界面
@@ -51,7 +50,7 @@ public class ImTest extends BaseTest {
      * 2.清空聊天记录；
      * 3.跳转到意见反馈页面;
      */
-    @Test(priority = 1)
+    @Test(priority = 2)
      public void imsetting(){
         //进入聊天设置界面
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/iv_setting").click();
@@ -77,7 +76,7 @@ public class ImTest extends BaseTest {
         * 2.编辑删除常用语
         * 3.发送常用语
       */
-    @Test(priority = 2)
+    @Test(priority = 3)
     public void commonword(){
 
         //展开常用语
@@ -100,14 +99,17 @@ public class ImTest extends BaseTest {
           *录制语音并发送
           *
          */
-    @Test(priority = 3)
-    public  void voice(){
+    @Test(priority = 4)
+    public  void voice()throws InterruptedException{
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/btn_set_mode_voice").click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
+        DriverUtil.permission(driver);
+         /*  if(driver.findElementById("com.android.packageinstaller:id/permission_allow_button").isDisplayed()==true){
+               driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+           }else{
+               System.out.println("没有弹框");
+                  }*/
+        Thread.sleep(2000);
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/btn_voice_send").click();
     }
 
@@ -116,7 +118,7 @@ public class ImTest extends BaseTest {
      * 输入文本并发送
      */
 
-    @Test(priority = 4)
+    @Test(priority = 5)
     public void sendmessage(){
 
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/et_sendmessage").sendKeys("输入文本测试发送文本微信，有问题请拨打手机号13564229364");
@@ -127,7 +129,7 @@ public class ImTest extends BaseTest {
      *发送位置
      * 定位当前位置并发送
      */
-    @Test(priority = 5)
+    @Test(priority = 6)
   public void position(){
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/btn_more").click();
         driver.findElementByXPath("//*[@text='位置']").click();
@@ -138,10 +140,11 @@ public class ImTest extends BaseTest {
  * 发送收藏
  *
  */
-    @Test(priority = 6)
-    public void Collection(){
+    @Test(priority = 7)
+    public void Collection()throws InterruptedException{
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/btn_more").click();
         driver.findElementByXPath("//*[@text='收藏']").click();
+        Thread.sleep(5000);
         driver.findElementByXPath("//*[@class='android.widget.LinearLayout']").click();
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/confirm").click();
     }
@@ -149,7 +152,7 @@ public class ImTest extends BaseTest {
      * 发送图片
      * 选择图片并发送
      */
-    @Test(priority = 7)
+    @Test(priority = 8)
    public void picture(){
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/btn_more").click();
         driver.findElementByXPath("//*[@text='图片']").click();
@@ -162,20 +165,26 @@ public class ImTest extends BaseTest {
      * 拍照上传
      * 拍照发送图片
      */
-    @Test(priority = 8)
-    public void Photograph(){
+    @Test(priority = 9)
+    public void Photograph()throws InterruptedException{
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/btn_more").click();
         driver.findElementByXPath("//*[@text='拍摄']").click();
+        DriverUtil.permission(driver);
+        Thread.sleep(2000);
+       /* if(driver.findElementById("com.android.packageinstaller:id/permission_allow_button").isDisplayed()==true){
+            driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+        }else {
+            System.out.println("无权限弹框");
+        }*/
         driver.findElementById("com.huawei.camera:id/shutter_button").click();
         driver.findElementById("com.huawei.camera:id/done_button").click();
-
     }
     /**
      * 拍摄视频
      * 拍摄视频并发送
      */
-    @Test(priority = 9)
-    public void video() throws InterruptedException {
+    @Test(priority = 10)
+    public void video()  {
         driver.findElementById("com.wlqq.phantom.plugin.ymm.im:id/btn_more").click();
         driver.findElementByXPath("//*[@text='视频']").click();
         TouchAction action=new TouchAction(driver);

@@ -22,7 +22,7 @@ public class MySystemInfo implements SystemInfo {
         systemInfo.put("环境", "线上");
         systemInfo.put("app类型", "司机端");
         systemInfo.put("平台", "android");
-        systemInfo.put("版本号", "6.14.0.0");
+        systemInfo.put("版本号", "6.21.0.4");
         systemInfo.put("测试执行人", "田瑞彩");
         return systemInfo;
     }

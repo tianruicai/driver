@@ -3,39 +3,39 @@
 <suite name="运满满UI自动化测试报告" verbose="1" >
     <parameter name="report.config" value="src/main/resources/report/extent-config.xml"/>
     <parameter name="system.info" value="com.extentreport.config.MySystemInfo"/>
-    <test name = "登录"  preserve-order="true">
-       <classes>
 
-           <class name="InitTest">
-               <methods>
-                   <include name="init"/>
+    <!--同意用户协议，允许权限，登录-->
+    <test name="登录" preserve-order="true">
+        <classes>
+            <class name="LoginTest">
+                <methods>
+                    <include name="init"/>
+                    <include name="login"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
-               </methods>
-           </class>
+    <!--聊天界面：发送消息-->
+    <test name="聊天界面" preserve-order="true">
+        <classes>
+            <class name="ImTest">
+                <methods>
+                    <include name="imdetail"/>
+                    <include name="imsetting"/>
+                    <include name="commonword"/>
+                    <include name="voice"/>
+                    <include name="sendmessage"/>
+                    <include name="position"/>
+                    <include name="Collection"/>
+                    <include name="picture"/>
+                    <include name="Photograph"/>
+                    <include name="video"/>
+                </methods>
+            </class>
+        </classes>
 
-           <class name="LoginTest">
-          <methods>
-                 <include name="login"/>
-          </methods>
-           </class>
-
-             <class name="ImTest">
-                  <methods>
-                      <include name="im"/>
-                      <include name="imsetting"/>
-                      <include name="commonword"/>
-                      <include name="voice"/>
-                      <include name="sendmessage"/>
-                      <include name="position"/>
-                      <include name="Collection"/>
-                      <include name="picture"/>
-                      <include name="Photograph"/>
-                      <include name="video"/>
-                  </methods>
-              </class>
-
-          </classes>
-       </test>
+    </test>
        <listeners>
            <!--测试报告监听器：修改自己的包名地址-->
          <listener class-name="com.extentreport.listener.MyExtentTestNgFormatter"/>

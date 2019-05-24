@@ -43,8 +43,45 @@ public class DriverUtil {
 
         keepClickElement(driver, new MobileBy.ByAndroidUIAutomator("new UiSelector().className(\"android.widget.Button\").textMatches(\".*始终允许.*\")"));
 
+    }
+
+
+
+
+    public  static  void permission(AppiumDriver driver) {
+
+
+             if(driver.getPageSource().contains("允许")||driver.getPageSource().contains("去授权")){
+
+                     try{
+                         driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+                         System.out.println("始终允许");
+                     }catch (NoSuchElementException e){
+                         driver.findElementById("com.xiwei.logistics:id/btn_agree").click();
+                         System.out.println("去授权");
+
+                     }
+             }else{
+                 System.out.println("没有找到授权权限或允许权限弹框");
+             }
+         }
+
 
     }
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
